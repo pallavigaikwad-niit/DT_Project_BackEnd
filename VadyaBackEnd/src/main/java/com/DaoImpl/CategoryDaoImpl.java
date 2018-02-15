@@ -13,8 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.Dao.CategoryDao;
 import com.Model.Category;
 
-@Repository("CategoryDao")
-@Transactional
+@Repository("categoryDao")
 @Service
 public class CategoryDaoImpl implements CategoryDao {
 	
@@ -27,16 +26,17 @@ public class CategoryDaoImpl implements CategoryDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	@Transactional
+	//@Transactional
 	public void insertCategory(Category category) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.saveOrUpdate(category);
 		session.getTransaction().commit();
+		session.close();
 
 	}
 
-	@Transactional
+	//@Transactional
 	public void updateCategory(Category category) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -45,6 +45,7 @@ public class CategoryDaoImpl implements CategoryDao {
 		session.close();
 	}
 
+	//@Transactional
 	public void deleteCategory(Category category) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -53,14 +54,16 @@ public class CategoryDaoImpl implements CategoryDao {
 		session.close();
 	}
 
+	//@Transactional
 	public Category getCategory(String id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		Category category = session.get(Category.class, id);
+		Category category=session.get(Category.class, id);
 		return category;
 	}
 
-	public List<Category> getAllCategories() {
+	//@Transactional
+	 public List<Category> getAllCategories() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Query query = session.createQuery("FROM Category");

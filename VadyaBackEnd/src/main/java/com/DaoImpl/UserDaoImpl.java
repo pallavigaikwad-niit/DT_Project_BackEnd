@@ -7,7 +7,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.Dao.UserDao;
@@ -15,11 +17,11 @@ import com.config.HibernateConfig;
 import com.Model.User;
 
 @Repository("userDao")
-@Transactional
+@Service
 public class UserDaoImpl implements UserDao {
 
-	private HibernateConfig config;
-
+	//private HibernateConfig config;
+	
 	@Autowired
 	SessionFactory sessionFactory;
 
@@ -34,7 +36,7 @@ public class UserDaoImpl implements UserDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	@Transactional
+	//@Transactional
 	public void insertUser(User user) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -47,7 +49,7 @@ public class UserDaoImpl implements UserDao {
 		session.close();
 	}
 
-	@Transactional
+	//@Transactional
 	public void updateUser(User user) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -57,7 +59,7 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
-	@Transactional
+	//@Transactional
 	public void deleteUser(User user) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -66,7 +68,7 @@ public class UserDaoImpl implements UserDao {
 		session.close();
 	}
 
-	@Transactional
+	//@Transactional
 	public List<User> getAllUsers() {
 		List<User> userList = new ArrayList<User>();
 		Session session = sessionFactory.openSession();
@@ -78,7 +80,7 @@ public class UserDaoImpl implements UserDao {
 		return userList;
 	}
 
-	@Transactional
+	//@Transactional
 	public User getUser(int id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();

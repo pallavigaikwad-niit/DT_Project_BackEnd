@@ -13,12 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.Dao.SupplierDao;
 import com.Model.Supplier;
 
-@Repository("SupplierDao")
-@Transactional
+@Repository("supplierDao")
 @Service
 public class SupplierDaoImpl implements SupplierDao {
 
-	@Autowired
+	//@Autowired
 	SessionFactory sessionFactory;
 	
 	@Autowired
@@ -27,7 +26,7 @@ public class SupplierDaoImpl implements SupplierDao {
 		this.sessionFactory = sessionFactory;
 	}
 	
-	@Transactional
+	//@Transactional
 	public void insertSupplier(Supplier supplier) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -37,7 +36,7 @@ public class SupplierDaoImpl implements SupplierDao {
 		
 	}
 
-	@Transactional
+	//@Transactional
 	public void updateSupplier(Supplier supplier) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -46,7 +45,7 @@ public class SupplierDaoImpl implements SupplierDao {
 		session.close();
 	}
 
-	@Transactional
+	//@Transactional
 	public void deleteSupplier(Supplier supplier) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -54,7 +53,7 @@ public class SupplierDaoImpl implements SupplierDao {
 		session.getTransaction().commit();
 	}
 	
-	@Transactional
+	//@Transactional
 	public List<Supplier> getAllSuppliers(){
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -64,7 +63,7 @@ public class SupplierDaoImpl implements SupplierDao {
 		return supplierList;
 	}
 
-	@Transactional
+	//@Transactional
 	public Supplier getSupplier(String id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();

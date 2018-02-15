@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name="Cateory")
+@Table(name="Category")
 public class Category {
 	@Id
 	@Column(name="cid")

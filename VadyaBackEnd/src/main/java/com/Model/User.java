@@ -30,10 +30,10 @@ public class User {
 	private String phone;
 	@NotNull
 	@Column(name="enabled")
-	private String enabled;
+	private String enabled="TRUE";
 	@NotNull
 	@Column(name="role")
-	private String role;	
+	private String role="USER";	
 	
 	public User() {
 		super();

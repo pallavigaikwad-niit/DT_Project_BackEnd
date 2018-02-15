@@ -14,9 +14,7 @@ import org.springframework.stereotype.Service;
 import com.Dao.ProductDao;
 import com.Model.Product;
 
-
-@Repository("ProductDao")
-@Transactional
+@Repository("productDao")
 @Service
 public class ProductDaoImpl implements ProductDao {
 	
@@ -29,7 +27,7 @@ public class ProductDaoImpl implements ProductDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	@Transactional
+	//@Transactional
 	public void insertProduct(Product product) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -38,7 +36,7 @@ public class ProductDaoImpl implements ProductDao {
 		session.close();
 	}
 	
-	@Transactional
+	//@Transactional
 	public void updateProduct(Product product) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -48,7 +46,7 @@ public class ProductDaoImpl implements ProductDao {
 		
 	}
 
-	@Transactional
+	//@Transactional
 	public void deleteProduct(Product product) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -57,7 +55,7 @@ public class ProductDaoImpl implements ProductDao {
 		session.close();
 	}
 
-	@Transactional
+	//@Transactional
 	public Product getProduct(int id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -67,7 +65,7 @@ public class ProductDaoImpl implements ProductDao {
 		return product;
 	}
 
-	@Transactional
+	//@Transactional
 	public List<Product> getAllProducts() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
