@@ -1,5 +1,4 @@
 package com.config;
-
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -56,11 +55,11 @@ public class HibernateConfig {
 	public SessionFactory getSessionFactory(DataSource datasource)
 	{
 		LocalSessionFactoryBuilder sessionFactory=new LocalSessionFactoryBuilder(getH2DataSource());
-		System.out.println("Step 1");
+		//System.out.println("Step 1");
 		sessionFactory.addProperties(getHibernetProp());
-		System.out.println("Step 2");
+		//System.out.println("Step 2");
 		sessionFactory.scanPackages("com.Model");
-		System.out.println("Step 3");
+		//System.out.println("Step 3");
 		sessionFactory.addAnnotatedClasses(User.class);
 		sessionFactory.addAnnotatedClasses(Category.class);
 		sessionFactory.addAnnotatedClasses(Supplier.class);

@@ -33,15 +33,12 @@ public class Product {
 	@NotNull
 	@Column(name="stock")
 	private Integer stock;
-	
 	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name= "cid")
 	private Category category;
-	
 	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name= "sid")
 	private Supplier supplier;
-	
 	@Transient
 	MultipartFile pimage;
 	private String imageName;
@@ -52,7 +49,7 @@ public class Product {
 
 	public void setPid(int pid) {
 		this.pid = pid;
-	}
+	} 
 
 	public String getProductName() {
 		return productName;

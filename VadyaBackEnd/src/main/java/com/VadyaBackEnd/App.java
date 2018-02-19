@@ -19,14 +19,17 @@ public class App
 	private  static HibernateConfig config;
     public static void main( String[] args )
     {
+    	System.out.println("Backend Running Fine");
+    
     	config = new HibernateConfig();
+    	/*    
     	categoryDao=new CategoryDaoImpl(config.getSessionFactory(config.getH2DataSource()));
     	Category category=new Category();
-    	category.setCid("a");
-    	category.setCname("B");
+    	category.setCid("d1");
+    	category.setCname("D1");
     	categoryDao.insertCategory(category);
-    	
-/*		userDao = new UserDaoImpl(config.getSessionFactory(config.getH2DataSource()));
+    	*/
+		userDao = new UserDaoImpl(config.getSessionFactory(config.getH2DataSource()));
 		
     	User u = new User();
     	//u.setUid(1);
@@ -45,6 +48,6 @@ public class App
 			for (User user : usersList) {
 				System.out.println("Email : " + user.getEmail() + ", Address: " + user.getAddress());
 			}
-		}*/
+		}
     }
 }
