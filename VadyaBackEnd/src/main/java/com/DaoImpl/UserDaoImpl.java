@@ -7,13 +7,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.Dao.UserDao;
-import com.config.HibernateConfig;
 import com.Model.User;
 
 @Repository("userDao")
@@ -69,6 +66,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	//@Transactional
+	@SuppressWarnings("unchecked")
 	public List<User> getAllUsers() {
 		List<User> userList = new ArrayList<User>();
 		Session session = sessionFactory.openSession();

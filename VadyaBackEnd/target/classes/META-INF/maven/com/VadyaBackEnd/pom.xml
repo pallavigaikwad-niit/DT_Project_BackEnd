@@ -7,7 +7,6 @@
   <packaging>jar</packaging>
   <name>VadyaBackEnd</name>
   <url>http://maven.apache.org</url>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -45,7 +44,12 @@
 	    <artifactId>spring-webmvc</artifactId>
 	    <version>4.3.12.RELEASE</version>
 	</dependency>
-	
+	 <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-core</artifactId>
+	    <version>4.3.12.RELEASE</version>
+	</dependency>
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
@@ -54,4 +58,5 @@
 	</dependency>
 	
   </dependencies>
+  
 </project>

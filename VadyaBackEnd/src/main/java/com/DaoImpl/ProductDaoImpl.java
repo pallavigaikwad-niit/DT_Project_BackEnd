@@ -2,8 +2,6 @@ package com.DaoImpl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -69,7 +67,9 @@ public class ProductDaoImpl implements ProductDao {
 	public List<Product> getAllProducts() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
+		@SuppressWarnings("rawtypes")
 		Query query =  session.createQuery("FROM Product");
+		@SuppressWarnings("unchecked")
 		List<Product> productsList = query.list();
 		return productsList;
 	}

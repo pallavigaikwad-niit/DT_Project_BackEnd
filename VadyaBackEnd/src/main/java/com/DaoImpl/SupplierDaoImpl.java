@@ -53,6 +53,7 @@ public class SupplierDaoImpl implements SupplierDao {
 	}
 	
 	//@Transactional
+	@SuppressWarnings("unchecked")
 	public List<Supplier> getAllSuppliers(){
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();

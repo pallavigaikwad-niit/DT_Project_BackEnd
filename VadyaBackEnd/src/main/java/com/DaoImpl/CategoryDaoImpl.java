@@ -8,7 +8,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.Dao.CategoryDao;
 import com.Model.Category;
@@ -63,7 +62,8 @@ public class CategoryDaoImpl implements CategoryDao {
 	}
 
 	//@Transactional
-	 public List<Category> getAllCategories() {
+	 @SuppressWarnings({ "rawtypes", "unchecked" })
+	public List<Category> getAllCategories() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Query query = session.createQuery("FROM Category");

@@ -1,0 +1,14 @@
+com\Model\Category.class
+com\DaoImpl\SupplierDaoImpl.class
+com\Dao\CategoryDao.class
+com\Dao\UserDao.class
+com\Model\Product.class
+com\Model\Supplier.class
+com\Dao\ProductDao.class
+com\DaoImpl\CategoryDaoImpl.class
+com\DaoImpl\UserDaoImpl.class
+com\DaoImpl\ProductDaoImpl.class
+com\config\HibernateConfig.class
+com\Model\User.class
+com\Dao\SupplierDao.class
+com\VadyaBackEnd\App.class
