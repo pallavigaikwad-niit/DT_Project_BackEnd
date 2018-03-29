@@ -33,7 +33,7 @@ public class User {
 	private String enabled="TRUE";
 	@NotNull
 	@Column(name="role")
-	private String role="USER";	
+	private String role="ROLE_USER";	
 	
 	public User() {
 		super();

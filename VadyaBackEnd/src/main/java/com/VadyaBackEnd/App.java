@@ -2,9 +2,11 @@ package com.VadyaBackEnd;
 
 public class App 
 {
-	/*private static UserDao userDao;
+	/*
+	private static UserDao userDao;
 	private static CategoryDao categoryDao;
-	private  static HibernateConfig config;*/
+	private  static HibernateConfig config;
+	*/
     public static void main( String[] args )
     {
 /*    	System.out.println("Backend Running Fine");

@@ -17,8 +17,6 @@ import com.Model.User;
 @Service
 public class UserDaoImpl implements UserDao {
 
-	//private HibernateConfig config;
-	
 	@Autowired
 	SessionFactory sessionFactory;
 
@@ -27,13 +25,11 @@ public class UserDaoImpl implements UserDao {
 		super();
 	}
 
-	@Autowired
 	public UserDaoImpl(SessionFactory sessionFactory) {
 		super();
 		this.sessionFactory = sessionFactory;
 	}
 
-	//@Transactional
 	public void insertUser(User user) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -46,7 +42,6 @@ public class UserDaoImpl implements UserDao {
 		session.close();
 	}
 
-	//@Transactional
 	public void updateUser(User user) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -56,7 +51,6 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
-	//@Transactional
 	public void deleteUser(User user) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -65,7 +59,6 @@ public class UserDaoImpl implements UserDao {
 		session.close();
 	}
 
-	//@Transactional
 	@SuppressWarnings("unchecked")
 	public List<User> getAllUsers() {
 		List<User> userList = new ArrayList<User>();
@@ -78,13 +71,21 @@ public class UserDaoImpl implements UserDao {
 		return userList;
 	}
 
-	//@Transactional
 	public User getUser(int id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		User user = (User) session.get(User.class, id);
+		System.out.println("Inside getUser Methods");
+		User user = session.get(User.class, id);
 		session.getTransaction().commit();
 		session.close();
+		return user;
+	}
+	public User getUserByEmail(String email) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Query query =  session.createQuery("FROM User where email=:email");
+		query.setParameter("email", email);
+		User user = (User) query.getSingleResult();
 		return user;
 	}
 }

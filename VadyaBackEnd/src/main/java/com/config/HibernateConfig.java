@@ -13,11 +13,15 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.DaoImpl.CartDaoImpl;
 import com.DaoImpl.CategoryDaoImpl;
+import com.DaoImpl.OrdersDaoImpl;
 import com.DaoImpl.ProductDaoImpl;
 import com.DaoImpl.SupplierDaoImpl;
 import com.DaoImpl.UserDaoImpl;
+import com.Model.Cart;
 import com.Model.Category;
+import com.Model.Orders;
 import com.Model.Product;
 import com.Model.Supplier;
 import com.Model.User;
@@ -55,15 +59,15 @@ public class HibernateConfig {
 	public SessionFactory getSessionFactory(DataSource datasource)
 	{
 		LocalSessionFactoryBuilder sessionFactory=new LocalSessionFactoryBuilder(getH2DataSource());
-		//System.out.println("Step 1");
 		sessionFactory.addProperties(getHibernetProp());
-		//System.out.println("Step 2");
 		sessionFactory.scanPackages("com.Model");
-		//System.out.println("Step 3");
 		sessionFactory.addAnnotatedClasses(User.class);
 		sessionFactory.addAnnotatedClasses(Category.class);
 		sessionFactory.addAnnotatedClasses(Supplier.class);
 		sessionFactory.addAnnotatedClasses(Product.class);
+		sessionFactory.addAnnotatedClass(Cart.class);
+		sessionFactory.addAnnotatedClass(Orders.class);
+		
 		System.out.println("Session Factory Object Created");
 		return sessionFactory.buildSessionFactory();		
 	}
@@ -93,6 +97,17 @@ public class HibernateConfig {
 	@Bean(name="productDaoImpl")
 	public ProductDaoImpl getProductData(SessionFactory sf){
 		return new ProductDaoImpl(sf);
+	}
+	@Autowired
+	@Bean(name="cartDaoImpl")
+	public CartDaoImpl getCartData(SessionFactory sf){
+		return new CartDaoImpl(sf);
+	}
+	
+	@Autowired
+	@Bean(name="ordersDaoImpl")
+	public OrdersDaoImpl getOrdersData(SessionFactory sf){
+		return new OrdersDaoImpl(sf);
 	}
 	
 	//Transaction Bean Object

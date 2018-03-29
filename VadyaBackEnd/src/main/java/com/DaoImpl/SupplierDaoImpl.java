@@ -16,7 +16,7 @@ import com.Model.Supplier;
 @Service
 public class SupplierDaoImpl implements SupplierDao {
 
-	//@Autowired
+	@Autowired
 	SessionFactory sessionFactory;
 	
 	@Autowired
@@ -25,7 +25,6 @@ public class SupplierDaoImpl implements SupplierDao {
 		this.sessionFactory = sessionFactory;
 	}
 	
-	//@Transactional
 	public void insertSupplier(Supplier supplier) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -35,7 +34,6 @@ public class SupplierDaoImpl implements SupplierDao {
 		
 	}
 
-	//@Transactional
 	public void updateSupplier(Supplier supplier) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -44,7 +42,6 @@ public class SupplierDaoImpl implements SupplierDao {
 		session.close();
 	}
 
-	//@Transactional
 	public void deleteSupplier(Supplier supplier) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -52,7 +49,6 @@ public class SupplierDaoImpl implements SupplierDao {
 		session.getTransaction().commit();
 	}
 	
-	//@Transactional
 	@SuppressWarnings("unchecked")
 	public List<Supplier> getAllSuppliers(){
 		Session session = sessionFactory.openSession();
@@ -63,7 +59,6 @@ public class SupplierDaoImpl implements SupplierDao {
 		return supplierList;
 	}
 
-	//@Transactional
 	public Supplier getSupplier(String id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();

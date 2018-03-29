@@ -25,7 +25,6 @@ public class CategoryDaoImpl implements CategoryDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	//@Transactional
 	public void insertCategory(Category category) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -35,7 +34,6 @@ public class CategoryDaoImpl implements CategoryDao {
 
 	}
 
-	//@Transactional
 	public void updateCategory(Category category) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -44,7 +42,6 @@ public class CategoryDaoImpl implements CategoryDao {
 		session.close();
 	}
 
-	//@Transactional
 	public void deleteCategory(Category category) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -53,7 +50,6 @@ public class CategoryDaoImpl implements CategoryDao {
 		session.close();
 	}
 
-	//@Transactional
 	public Category getCategory(String id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -61,7 +57,6 @@ public class CategoryDaoImpl implements CategoryDao {
 		return category;
 	}
 
-	//@Transactional
 	 @SuppressWarnings({ "rawtypes", "unchecked" })
 	public List<Category> getAllCategories() {
 		Session session = sessionFactory.openSession();

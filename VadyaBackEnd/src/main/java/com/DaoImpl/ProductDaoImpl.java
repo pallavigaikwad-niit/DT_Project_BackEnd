@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.Dao.ProductDao;
 import com.Model.Product;
@@ -25,16 +26,14 @@ public class ProductDaoImpl implements ProductDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	//@Transactional
 	public void insertProduct(Product product) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		session.saveOrUpdate(product);
+		session.save(product);
 		session.getTransaction().commit();
 		session.close();
 	}
 	
-	//@Transactional
 	public void updateProduct(Product product) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -44,7 +43,6 @@ public class ProductDaoImpl implements ProductDao {
 		
 	}
 
-	//@Transactional
 	public void deleteProduct(Product product) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -53,7 +51,6 @@ public class ProductDaoImpl implements ProductDao {
 		session.close();
 	}
 
-	//@Transactional
 	public Product getProduct(int id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -63,7 +60,6 @@ public class ProductDaoImpl implements ProductDao {
 		return product;
 	}
 
-	//@Transactional
 	public List<Product> getAllProducts() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -72,6 +68,14 @@ public class ProductDaoImpl implements ProductDao {
 		@SuppressWarnings("unchecked")
 		List<Product> productsList = query.list();
 		return productsList;
+	}
+	public List<Product> getProductsByCategotry(String cid){
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Query query = session.createQuery("FROM Product WHERE cid= :cid");
+		query.setString("cid", cid);
+		List<Product> productByCategoryList = query.list();
+		return productByCategoryList;
 	}
 
 }
